@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { LocationContext } from "../Context/LocationContext";
 import { examplesAmerica, examplesnotAmerica, examplesnull } from "./Teams";
 import ProgressiveImage from "react-progressive-image";
-import csgoLogo from "../../Images/csgoLogoDefault.png";
+import loader from '../../assets/images/placeholder/loader.gif';
 import { TEAM } from "../../routes/routes";
-import "./teamcollection.css";
+import { LOOKPROFILE } from "../../titles/TitleTag";
+import "./TeamCollection.css";
 
 const TeamCollection = ({ collection }) => {
   const [examples, setExamples] = useState(examplesnull);
@@ -31,11 +32,12 @@ const TeamCollection = ({ collection }) => {
               <Link
                 key={team.name}
                 to={TEAM.replace(":teamid", team.id)}
-                title={`Look the team profile of: ${team.name}`}
+                title={LOOKPROFILE + team.name}
+                style={{backgroundColor: team.colors.DarkMuted}}
               >
-                <div className="crosshair-expand">
+                <div>
                   <div>
-                    <ProgressiveImage src={team.img} placeholder={csgoLogo}>
+                    <ProgressiveImage src={team.img} placeholder={loader}>
                       {(src) => (
                         <img
                           className=""
@@ -54,11 +56,12 @@ const TeamCollection = ({ collection }) => {
               <Link
                 key={team.name}
                 to={TEAM.replace(":teamid", team.id)}
-                title={`Look the team profile of: ${team.name}`}
+                title={LOOKPROFILE + team.name}
+                style={{backgroundColor: team.colors.DarkMuted}}
               >
-                <div className="crosshair-expand">
+                <div>
                   <div>
-                    <ProgressiveImage src={team.img} placeholder={csgoLogo}>
+                    <ProgressiveImage src={team.img} placeholder={loader}>
                       {(src) => (
                         <img
                           className=""

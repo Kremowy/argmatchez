@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Team from "./Team";
 import SaveInLS from "./SaveInLS";
 import axios from "axios";
-import {DebounceInput} from 'react-debounce-input';
-import "./search.css";
+import { DATABASE_SEARCH_TEAM } from "../../constants/ApiEndpoints";
+import { DebounceInput } from 'react-debounce-input';
+import "./SearchTeam.css";
 
 const SearchTeam = ({ setCollection, collection }) => {
   const [teams, setTeams] = useState([]);
@@ -17,8 +18,7 @@ const SearchTeam = ({ setCollection, collection }) => {
       },
     };
     if (input.length !== 0) {
-      axios(
-        `https://arg-matchez-backend.herokuapp.com/database/searchteam/${input}`,
+      axios(DATABASE_SEARCH_TEAM.replace(':letters', input),
         config
       ).then(({ data }) => {
         data ? setTeams(data) : setTeams([]);

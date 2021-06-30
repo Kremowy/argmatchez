@@ -1,29 +1,20 @@
 import React from "react";
-import Layout from "./Layout";
+import Layout from "./components/Layout";
 import TeamRankingProvider from "./components/Context/TeamRankingContext";
-import HeaderLogoProvider from "./components/Context/HeaderLogoContext";
+import PaletteProvider from "./components/Context/PaletteContext";
 import LocationProvider from "./components/Context/LocationContext";
 import LoaderProvider from "./components/Context/LoaderContext";
-import TeamsProvider from "./components/Context/TeamsContext";
 
-const App = () => {
-  if (navigator.onLine !== true) {
-    alert("No Internet Connection");
-  } else {
-    return (
-      <TeamsProvider>
-        <HeaderLogoProvider>
-          <LoaderProvider>
+const App = () => (
+    <PaletteProvider>
+        <LoaderProvider>
             <TeamRankingProvider>
-              <LocationProvider>
-                <Layout />
-              </LocationProvider>
+                <LocationProvider>
+                    <Layout />
+                </LocationProvider>
             </TeamRankingProvider>
-          </LoaderProvider>
-        </HeaderLogoProvider>
-      </TeamsProvider>
-    );
-  }
-};
+        </LoaderProvider>
+    </PaletteProvider>
+);
 
 export default App;

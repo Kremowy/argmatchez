@@ -1,0 +1,116 @@
+.tamano-tarjeta-one-team .posicion-tarjeta {
+    align-self: center;
+    text-align: center;
+}
+
+.tamano-tarjeta-one-team {
+    width: 630px !important;
+    padding: 12px;
+}
+
+.tamano-tarjeta-one-team .card-stacked {
+    max-width: 420px;
+}
+
+.tamano-tarjeta-one-team .team-canvas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+}
+
+.tamano-tarjeta-one-team .padding-streaming-box {
+    padding: 15px 30px 3px 30px !important;
+}
+
+.tamano-tarjeta-one-team .card-stacked > .card-content > .display-flex {
+    margin-bottom: 5px;
+}
+
+.tamano-tarjeta-one-team .logo-canvas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tamano-tarjeta-one-team .logo-canvas .team-logo {
+    max-width: 140px;
+    max-height: 130px;
+}
+
+.tamano-tarjeta-one-team .card-image {
+    max-width: 100% !important;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.tamano-tarjeta-one-team .card-content {
+    padding: 10px 0 0 20px !important;
+}
+
+.tamano-tarjeta-one-team .card-stacked > .card-content > .display-flex > .text-align-start {
+    width: 72px;
+}
+
+.tamano-tarjeta-one-team .logo-canvas {
+    height: 176px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tamano-tarjeta-one-team .card-image > span {
+    width: 100%;
+    padding: 15px 0 3px 0;
+    color: black;
+    border-top: 1px solid rgba(160, 160, 160, 0.2);
+}
+
+@media screen and (max-width: 770px) {
+    .tamano-tarjeta-one-team .match-data {
+        padding: 10px 30px;
+    }
+    .tamano-tarjeta-one-team .card-image {
+        width: 100%;
+    }
+    .tamano-tarjeta-one-team .container-info > .modalidad {
+        font-size: 14px;
+        margin: 10px 0;
+    }
+
+    .tamano-tarjeta-one-team .logo-canvas {
+        max-width: 100%;
+        width: 70px;
+        align-self: center;
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .tamano-tarjeta-one-team .logo-canvas .team-logo {
+        max-width: 80px;
+        max-height: 80px;
+    }
+
+    .tamano-tarjeta-one-team {
+        width: 330px !important;
+        display: flex;
+        flex-direction: column;
+        padding: 15px 15px 10px 15px !important;
+    }
+
+    .tamano-tarjeta-one-team .card-content {
+        padding: 10px 0 0 0 !important;
+    }
+
+    .tamano-tarjeta-one-team .match-data {
+        padding: 10px 30px;
+    }
+
+    .tamano-tarjeta-one-team .card-stacked > .card-content > .display-flex > .text-align-start {
+        width: 50px;
+    }
+}

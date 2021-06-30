@@ -1,0 +1,49 @@
+.mini-winrate-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
+    width: 160px;
+}
+
+.percentage-bar {
+    width: 100px;
+    border-radius: 10px;
+    height: 7px;
+    background-color: rgba(0, 0, 0, 0.11);
+    position: relative;
+    z-index: 50;
+}
+
+.percentage-bar > div {
+    transition: width 0.5s ease-out;
+    position: absolute;
+    border-radius: 10px;
+    height: 7px;
+    left: 0;
+    z-index: 100;
+}
+
+.loader-winrate {
+    margin: 5px 0;
+}
+
+.loader-winrate .small {
+    width: 15px !important;
+    height: 15px !important;
+}
+
+@media screen and (max-width: 640px) {
+    .loader-winrate {
+        margin-left: 50px;
+    }
+
+    .loader-winrate > span {
+        display: none;
+    }
+
+    .mini-winrate-container {
+        width: 140px;
+        font-size: 13px;
+    }
+}

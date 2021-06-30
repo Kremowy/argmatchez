@@ -1,12 +1,15 @@
 import React, { useState, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { TEAM, RANKING } from "../../routes/routes";
-import { LOOKPROFILE } from "../../titlestag/titlestag";
+import { LOOKPROFILE } from "../../titles/TitleTag";
+import { PLAYER_INFO } from "../../constants/ApiEndpoints";
 import ProgressiveImage from "react-progressive-image";
-import csgoLogoBlack from "../../Images/csgoLogoDefaultBlack.png";
-import { usePalette } from "react-palette";
+import LoaderGif from "../../assets/images/placeholder/loader.gif";
+import Loader from "../Loader/Loader";
 import axios from "axios";
-import "./hltvranking.css";
+import "./HltvRanking.css";
+
+const nopic = React.lazy(() => import("../../assets/images/placeholder/nopic.png"));
 const PlayerModal = React.lazy(() => import("../PlayerModal/PlayerModal"));
 
 const Team = ({
@@ -18,8 +21,8 @@ const Team = ({
   points,
   position,
   roster,
+  colors,
 }) => {
-  let colorTeam = usePalette("https://proxy-kremowy.herokuapp.com/" + img).data;
   const [playerinfo, setPlayerInfo] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -34,19 +37,11 @@ const Team = ({
         "X-Requested-With": "XMLHttpRequest",
       },
     };
-    try {
-      axios
-        .get(
-          `https://arg-matchez-backend.herokuapp.com/api/playerinfo/${playerIGN}`,
-          config
-        )
-        .then(({ data }) => {
-          setPlayerInfo(data);
-        });
-    } catch (error) {
-      setPlayerInfo(false);
-      setIsOpen(false);
-    }
+    axios
+      .get(PLAYER_INFO.replace(":name", playerIGN), config)
+      .then(({ data }) => {
+        setPlayerInfo(data);
+      });
   };
   return (
     <div
@@ -56,30 +51,36 @@ const Team = ({
         "animate__animated"
       }`}
     >
-      <div style={{ backgroundColor: colorTeam.darkVibrant }}>
-        <Suspense fallback={<div></div>}>
+      <div style={{ backgroundColor: colors.DarkVibrant }}>
+        <Suspense fallback={<Loader transparent />}>
           <PlayerModal
             playerinfo={playerinfo}
-            color={colorTeam}
+            color={colors}
             setIsOpen={setIsOpen}
             modalIsOpen={modalIsOpen}
             img={img}
           />
         </Suspense>
-        <Link className="team" to={id ? TEAM.replace(":teamid", id) : RANKING} title={`Look the team profile of: ${name}`}>
+        <Link
+          className="team"
+          to={id ? TEAM.replace(":teamid", id) : RANKING}
+          title={`Look the team profile of: ${name}`}
+        >
           <span className="color-text-white">#{position}</span>
           <div>
             <ProgressiveImage
-              src={img ? img : csgoLogoBlack}
-              placeholder={csgoLogoBlack}
+              src={img !== undefined ? img : nopic}
+              placeholder={LoaderGif}
             >
-              {(src) => (
-                <img src={src} alt={name} />
-              )}
+              {(src) => <img src={src} alt={name} />}
             </ProgressiveImage>
           </div>
         </Link>
-        <Link className="name" to={id ? TEAM.replace(":teamid", id) : RANKING} title={`Look the team profile of: ${name}`}>
+        <Link
+          className="name"
+          to={id ? TEAM.replace(":teamid", id) : RANKING}
+          title={`Look the team profile of: ${name}`}
+        >
           <span>{name}</span>
           <span className="display-flex">
             {points} Points <span className={balanceColor}>{balance}</span>
